@@ -1,0 +1,14 @@
+super 指向原型,可以覆写对象了
+<script>
+let o={
+    x(){console.log(1)}
+}
+let o2={
+    foo(){
+        super.x()
+    }
+}
+Object.setPrototypeOf(o2,o)
+o2.foo()
+
+</script>

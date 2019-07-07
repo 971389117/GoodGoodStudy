@@ -1,0 +1,15 @@
+<script>
+        function foo() {
+            console.log(this.a)
+        }
+        let obj = {
+            a: 4,
+            foo: function(){
+                console.log('foo',this);
+                (function(){
+                    console.log('f1',this)
+                }())
+            }
+        }
+        obj.foo()
+</script>

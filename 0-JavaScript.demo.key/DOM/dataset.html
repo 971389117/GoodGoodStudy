@@ -1,0 +1,27 @@
+<!-- 有时，需要在HTML元素上附加数据，供 JavaScript 脚本使用。
+    可以这样做 <div id="mydiv" foo="bar">
+    但是标准提供了 data*来更规范的解决这个问题
+-->
+<div id="div" data-timestamp="1522907809292"></div>
+
+<script>
+
+const div = document.querySelector('#div')
+
+setInterval(()=>{
+    let t=Number(div.dataset.timestamp)
+    t+=1
+    // 使用 dataset 访问
+    // 也可以用getAttr/setAttr 等常规属性
+    div.dataset.timestamp=t
+    div.textContent=JSON.stringify(div.dataset)
+},1000)
+// 每 1 秒改变一次 dataset 数据,并更新视图
+// 如果有十个 Element 都要更新数据怎么办?
+// 观察者模式登场.
+// 今天暂时到这里,明天去看 ES6 的Class,以及JavaScript 板观察者模式
+// 然后回归 v-model
+
+
+
+</script>

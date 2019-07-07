@@ -1,0 +1,65 @@
+<ul>
+    <li>变量</li>
+    <li>解构赋值
+        <ul>
+            <li>数组</li>
+            <li>对象</li>
+        </ul>
+    </li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<h4>变量</h4>
+声明变量
+[var] [function] [let] [const] [import] [class]
+变量与global 对象解耦
+[var function声明的属于顶层对象属性]
+[let const class声明的不在属于 global 对象属性]
+<h4>解构赋值</h4>
+ 1. 如果解构失败，变量的值等于undefined。
+数组的解构赋值
+<script>
+// 两边模式匹配
+// 只要某种数据结构具有 Iterator 接口，都可以采用数组形式的解构赋值。
+let arrX=function(){
+    let [a,b,c]=[1,2,3]
+    let [a1,[[b1],c1]]=[1,[[2],3]]
+    let [a2,b2,c2]=new Set([1,2,3])
+    function* fibs(){
+        let a=0
+        let b=1
+        while(true){
+            yield a;
+            [a,b]=[b,a+b]
+        }
+    }
+    let [first,second,third,fourth,fifth,sixth]=fibs()
+    console.log(sixth )//5
+    // 默认值
+    [x=1,y=x]=[] // 1 1
+    // 如果某某 === undefined，就把 f()的结果覆给 x
+    [x=f()]=[undefined]
+}
+</script>
+对象的解构赋值
+<script>
+let objX=function(){
+    // 对象的解构与数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。
+    let { bar, foo } = { foo: "aaa", bar: "bbb" }; // foo===aaa bar===bbb
+    let { foo: baz } = { foo: 'aaa', bar: 'bbb' }; // baz === 'aaa'
+    let { first: f, last: l } = { first: 'hello', last: 'world' }; // f===hello  l===world
+    let {p:[x,{y}]} = {p:['Hello',{y:'World'}]}
+    let {p,p:[x,{y}]} = {p:['Hello',{y:'World'}]}
+    // 默认值 默认值生效的条件是，对象的属性值严格等于undefined。
+    let {message:msg = 'Something went wrong'}={}
+    ({ddd}={ddd:321}) // ddd === 321
+    let {0 : first, [arr.length - 1] : last} = [1,2,3,4]; // first===1  last===4
+}
+    </script>

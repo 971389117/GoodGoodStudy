@@ -1,0 +1,23 @@
+<ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+创建一个指针对象，指向当前数据结构的起始位置。也就是说，遍历器对象本质上，就是一个指针对象。
+<script>
+let it=makeIterator(['a','b'])
+it.next()
+it.next()
+it.next()
+function makeIterator(array){
+    let nextIndex=0
+    return {
+        next:function(){
+            return nextIndex<array.length ?
+            {value:array[nextIndex++],done:false}:
+            {value:undefined,donw:true}
+        }
+    }
+}
+</script>

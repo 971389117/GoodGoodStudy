@@ -1,0 +1,217 @@
+// 1.全局变量
+$highlight-color:#f90;
+$highlight-border:1px solid $highlight-color;
+
+.selected {
+    $width: 100px;
+    width: $width;
+    border: $highlight-border;
+}
+
+// 2 嵌套规则
+#content {
+    article {
+        h1 {
+            color: #333
+        }
+
+        p {
+            margin-bottom: 1.4em;
+        }
+    }
+
+    aside {
+        background-color: #eee;
+    }
+}
+
+// 2.1 父选择器占位符（标识符）
+article a {
+    color: blue;
+
+    &:hover {
+        color: red
+    }
+}
+
+#content aside {
+    color: red;
+
+    body.ie & {
+        color: green
+    }
+}
+
+.div {
+    .a {
+        color: #000;
+    }
+
+    .c &-sidebar {
+        color: yellow
+    }
+}
+
+// 2.2
+
+.container {
+
+    h1,
+    h2,
+    h3 {
+        margin-bottom: .8em;
+    }
+}
+
+nav,
+aside {
+    a {
+        color: blue
+    }
+}
+
+nav,
+a {
+
+    span,
+    .span {
+        font-size: 18px
+    }
+}
+
+// 2.3
+article {
+    ~article {
+        border-top: 1px solid #000;
+    }
+
+    // 弟弟们选择器
+    >section {
+        background: #000;
+    }
+
+    dl> {
+        dt {
+            color: #333
+        }
+
+        dd {
+            color: #555
+        }
+    }
+
+    nav+& {
+        margin-top: 0
+    }
+
+    // 相邻兄弟选择器
+}
+
+// 2.4
+nav {
+    border: {
+        style: solid;
+        width: 1px;
+        color: #ccc;
+    }
+}
+
+nav {
+    border: 1px solid #000 {
+        left: 0;
+        right: 0;
+    }
+}
+
+// 3.2
+$link-color:blue !default;
+$link-color:red; //我是静默注释
+a{
+    /* 我是非静默注释 */
+    color: /* 我是静默注释*/$link-color;
+}
+
+.bule-theme{
+    @import "bule-theme";
+}
+
+@import "test";
+
+// 5.
+
+@mixin rounded-corners {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  notice {
+    background-color: green;
+    border: 2px solid #00aa00;
+    @include rounded-corners;
+  }
+
+// 5.2
+@mixin no-bullets {
+    list-style:none;
+    li{
+        list-style-image: none;
+        list-style-type: none;
+        margin-left: 0px;
+    }
+}
+ul.plain{
+    color:#444;
+    @include no-bullets()
+}
+// 5.3
+@mixin link-colors($normal, $hover, $visited) {
+    color: $normal;
+    &:hover { color: $hover; }
+    &:visited { color: $visited; }
+  }
+
+  a {
+    @include link-colors(blue, red, green);
+  }
+  a {
+    @include link-colors(
+      $normal: blue,
+      $visited: green,
+      $hover: red
+  );
+}
+
+// 5.4 默认值可以是任何有效的css属性值，甚至是其他参数的引用
+
+@mixin link-colors(
+    $normal,
+    $hover: $normal,
+    $visited: $normal
+  ){
+  color: $normal;
+  &:hover { color: $hover; }
+  &:visited { color: $visited; }
+}
+span{
+    @include link-colors(red)
+}
+
+// 6. 任何跟.error有关的组合选择器样式也会被.seriousError以组合选择器的形式继承
+.error{
+    border: 1px solid #000;
+}
+.error a{
+    color:white;
+}
+.seriousError{
+    @extend .error;
+    border-width: 3px;
+}
+// 6.2
+.disabled{
+    color:gray;
+    @extend a
+};
+//
+// 只要你想，你完全可以放心地继承有后代选择器修饰规则的选择器，不管后代选择器多长，但有一个前提就是，不要用后代选择器去继承。

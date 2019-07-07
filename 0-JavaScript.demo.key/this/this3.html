@@ -1,0 +1,20 @@
+<!-- 易错 2 函数中的this是直接调用对象 window -->
+
+<script>
+        function foo() {
+            console.log(this.a)
+        }
+        let obj = {
+            a: 4,
+            foo: foo
+        }
+       let bar=obj.foo
+        var a = 2
+        bar()// 2
+    </script>
+<!--
+    为什么是 window?bar 不是 obj.foo 吗?由 obj 调用啊!
+    这里说一下我的猜想:
+    JS 中,对象只持有函数的内存地址,而非拥有函数.函数是独立于对象而存在的.
+    哪个对象调用函数了,暂时就是一家子,不调用了就不管你了.
+-->

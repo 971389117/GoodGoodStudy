@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="css/KNE-note.css">
+<div class="warrper">
+    <section class="left-bar">
+        <!-- Reduce 简化 Recite 背诵 -->
+        <ul>
+            <li>appendChild</li>
+            <li>insertBefore</li>
+            <li>removeChild</li>
+            <li>replaceChild</li>
+            <hr>
+            <li>append 和 prepend</li>
+            <li>remove</li>
+            <li>replaceWith</li>
+            <li>before 和 after</li>
+            <hr>
+            <li>insertAdjacentElement</li>
+        </ul>
+    </section>
+
+    <main id='main' class="main">
+        <!-- Record 记录 -->
+        <div id="pplive">我是一个路标，我的 id 是 pplive</div>
+        <h2>DOM 树操作</h2>
+
+        <h3>第一组</h3>
+        <h4>appendChild(chlid):child</h4>
+        作用：将目标添加到尾部
+        <pre>
+        let p=document.createElement('p')
+        p.innerText='我是新的P标签'
+        document.body.appendChild(p)
+        </pre>
+        作用：移动目标
+        <pre>
+        let pplive = document.querySelector('#pplive') ;
+        pplive.appendChild(p)
+        </pre>
+        原型 Node.prototype.appendChild()
+
+        <h4>insertBefore(newNode,referenceNode):newNode</h4>
+        作用：将新节点放到参考节点前面
+        <pre>
+        main.insertBefore(p,pplive)
+        </pre>
+        作用：和 appendChild 一样
+        <pre>
+        main.insertBefore(p,null)
+        </pre>
+        原型：Node.prototype.insertBefore()
+
+        <h4>removeChild(childNode):childNode</h4>
+        作用：将节点从 DOM 树中移除，但是还在内存中
+        <pre>
+            //移除所有的子节点
+            while(main.firstChild){
+                main.removeChild(main.firstChild)
+            }
+        </pre>
+        原型：Node.prototype.removeChild()
+
+        <h4>replaceChild(newChild,oldChild):oldChild</h4>
+        作用：替换子节点，返回被替换的节点
+        <pre>
+        let p3=document.createElement('p')
+        p3.textContent='没关系，你不用管我'
+        pplive.parentElement.replaceChild(p3,pplive)
+        </pre>
+        原型：Node.prototype.replaceChild()
+
+
+        <h3>另一组</h3>
+        <h4>append()和prepend()</h4>
+        append() 在最后一个子节点后面
+        prepend()在第一个子节点前面
+        <pre>
+        </pre>
+        append原型：ParentNode.append
+        prepend 原型：ParentNode.prepend()
+
+        <h4>remove()</h4>
+        作用：直接从 DOM 树删除当前节点
+        <pre>
+        main.firstElementChild.remove()</pre>
+        原型：ChildNode.remove()
+
+        <h4>before(node...)和after(node...)</h4>
+        作用：将 DOMString 对象和 Node 对象添加到当前节点前后，可以一次性添加多个节点
+        <pre>
+        main.firstElementChild.before('a','b')
+        main.firstElementChild.before('a','b')
+        </pre>
+        before原型：ChildNode.before()
+        after原型：ChildNode.after()
+
+        <h4>replaceWith(node...)</h4>
+        作用：替换节点，参数可以有多个
+        <pre>
+        let pReplaceWith=document.createElement('p')
+        pReplaceWith.textContent='123'
+        main.firstElementChild.replaceWith('wo','ni',pReplaceWith)
+        </pre>
+
+
+        <h3>第三组</h3>
+        <h4>insertAdjacentElement</h4>
+        beforebegin
+        afterbegin
+        beforeend
+        afterend
+        <pre>
+            let p1insertAdjacentElement=document.createElement('p')
+            p1insertAdjacentElement.innerText='1234'
+            main.firstElementChild.insertAdjacentElement('beforebegin',p1insertAdjacentElement)
+        </pre>
+    </main>
+
+    <section class="summa">
+        <!-- Reflect 思考 Review 复习-->
+        <h4>第一组与另一组的区别</h4>
+        <ul>
+            <li>
+                另一组允许追加 DOMString 对象，而 第一组 只接受
+                Node 对象。
+            </li>
+            <li>
+                另一组 没有返回值，而 第一组 返回追加的 Node 对象。
+
+            </li>
+            <li>
+                另一组可以追加几个节点和字符串，而 第一组 只能追加一个节点。
+            </li>
+            <li>
+                另一组兼容性相对较差，而 第一组 不存在兼容性问题
+            </li>
+        </ul>
+
+        <b>第三组好像好用？不存在兼容性问题</b>
+    </section>
+</div>

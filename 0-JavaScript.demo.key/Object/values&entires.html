@@ -1,0 +1,12 @@
+keys -> 键名
+values -> 值
+entires -> 键值对数组
+<script>
+let o=Object.defineProperties({p:1,p1:2},{
+    p3:{value:1},
+})
+let a=Object.values(o)
+let a1=Object.entries(o)
+let a2=Object.keys(o)
+console.log(a,'\n',a1,'\n',a2)
+</script>

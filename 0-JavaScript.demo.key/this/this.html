@@ -1,0 +1,12 @@
+<!-- 函数中的this是直接调用对象 -->
+<script>
+    function foo() {
+        console.log(this.a)
+    }
+    let obj = {
+        a: 4,
+        foo: foo
+    }
+    var a = 2
+    obj.foo()// 4
+</script>

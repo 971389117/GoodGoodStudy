@@ -1,0 +1,35 @@
+<canvas height="1080" width="1920"></canvas>
+<script>
+    // 初始化 canvas
+    let ctx = document.querySelector('canvas').getContext('2d')
+
+    //设置 线的宽度
+    let lineWidth = ctx.lineWidth = 10
+    //设置线的颜色
+    ctx.strokeStyle = 'red'
+    //设置 填充颜色
+    ctx.fillStyle = "rgb(200,0,0)";
+    //填充矩形  (x,y,width,height)
+    ctx.fillRect(10, 10, 50, 50);
+    // 描边矩形
+    ctx.strokeRect(10, 60, 50, 50)
+    // 擦除矩形
+    ctx.clearRect(20, 20, 30, 30)
+    // 绘制路径 填充图形
+    ctx.beginPath();
+    ctx.moveTo(10, 120);
+    ctx.lineTo(60, 120);
+    ctx.lineTo(60, 170);
+    ctx.fill();
+    // 绘制路径 描边图形
+    ctx.beginPath();
+    ctx.moveTo(10, 180);
+    ctx.lineTo(60, 180);
+    ctx.lineTo(60, 230);
+    ctx.lineTo(10, 230);
+    ctx.stroke();
+    // 绘制原形 ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+    ctx.beginPath()
+    ctx.arc(40, 280,30, 0,Math.PI+(Math.PI*0)/2, true);
+    ctx.stroke()
+</script>

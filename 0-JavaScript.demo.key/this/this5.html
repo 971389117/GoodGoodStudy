@@ -1,0 +1,14 @@
+<script>
+        function foo() {
+            console.log(this.a)
+        }
+        let obj = {
+            a: 4,
+            foo: foo
+        }
+        function doFoo(fn){
+            fn()
+        }
+        var a = 2
+        doFoo(obj.foo) //2
+</script>

@@ -1,0 +1,13 @@
+1.keys 只要该要的东西,借用(原型)的,不可枚举的都不要
+2.getOwnPropertyNames也不要借来的,但是要不可枚举的
+<script>
+ let o1={p:1}
+ let o2=Object.create(o1,{
+    p1:{value:10,enumerable:false}
+ })
+
+ let keys = Object.keys(o2)
+ let keys2=Object.getOwnPropertyNames(o2)
+ console.log(keys) // 空数组 []
+ console.log(keys2)
+</script>

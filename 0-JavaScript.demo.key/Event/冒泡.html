@@ -1,0 +1,73 @@
+<div id="tap" class="tap">
+    <p>lorem</p>
+</div>
+
+<style>
+    .tap {
+        width: 100px;
+        height: 100px;
+        background: #ccc
+    }
+</style>
+
+<script>
+    const tap = document.querySelector('#tap')
+    tap.addEventListener('click', function (e) {
+        console.log(e)
+    })
+    document.body.addEventListener('click', function (e) {
+        console.log(e.currentTarget)
+    })
+</script>
+
+<!--
+bubbles: true
+type: "click"
+view: Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+
+altKey: false
+ctrlKey: false
+metaKey: false
+shiftKey: false
+
+clientX: 55
+clientY: 72
+screenX: 115
+screenY: 206
+
+path: (5) [div#tap.tap, body, html, document, Window]
+
+
+button: 0
+buttons: 0
+cancelBubble: false
+cancelable: true
+
+composed: true
+currentTarget: null
+defaultPrevented: false
+detail: 1
+eventPhase: 0
+fromElement: null
+isTrusted: true
+layerX: 55
+layerY: 72
+movementX: 0
+movementY: 0
+offsetX: 48
+offsetY: 64
+pageX: 55
+pageY: 72
+
+relatedTarget: null
+returnValue: true
+
+sourceCapabilities: InputDeviceCapabilities {firesTouchEvents: false}
+srcElement: div#tap.tap
+target: div#tap.tap
+timeStamp: 1773.5699999975623
+toElement: div#tap.tap
+
+which: 1
+x: 55
+y: 72 -->

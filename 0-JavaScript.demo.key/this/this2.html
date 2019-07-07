@@ -1,0 +1,17 @@
+    <!-- 易错 1 函数中的this是直接调用对象 obj2 -->
+
+    <script>
+        function foo() {
+            console.log(this.a)
+        }
+        let obj2 = {
+            a: 4,
+            foo: foo
+        }
+        let obj1 = {
+            a:8,
+            obj2:obj2
+        }
+        var a = 2
+        obj1.obj2.foo()// 4
+    </script>

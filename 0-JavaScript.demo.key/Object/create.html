@@ -1,0 +1,9 @@
+以实例对象为原型,创建一个新对象
+
+<script>
+let arr=[1,2,3]
+let o=Object.create(arr,{
+    p1:{value:123,enumerable: true}
+})
+console.log(o)
+</script>
