@@ -1,9 +1,10 @@
 剩下的属性中,自身可枚举的放在 z 里面.
 <script>
 let o={a:1,b:2,c:3,d:4}
-Object.defineProperty(o,'p',{value:40})
+
+Object.defineProperty(o,'p',{value:40})// 此种模式默认是不可枚举
 
 let {a,b,...z}=o
 
-console.log(a,b,z)
+console.log(a,b,z)// z={c:3,d:4}
 </script>
